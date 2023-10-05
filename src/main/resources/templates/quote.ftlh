@@ -10,6 +10,6 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body style="background-image: url(${imageURL});">
-<blockquote><strong>${quoteTitle}</strong>${quotePron}<em>${quoteWordType}</em><br />${quoteText}</blockquote>
+<blockquote><strong>${quoteTitle}</strong>${quotePron}<em>${quoteWordType}</em>${newLine?no_esc}${quoteText}</blockquote>
 </body>
 </html>

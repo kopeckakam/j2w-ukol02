@@ -23,19 +23,18 @@ public class MainController {
         int imageIndex = random.nextInt(1, quotes.size() + 1);
         List<String> splitQuote = parseLine(quotes.get(quoteIndex));
 
-        String modelAndViewName;
-        if (splitQuote.get(0).isEmpty()) {
-            modelAndViewName = "plainQuote";
-        } else {
-            modelAndViewName = "quote";
-        }
-
-        ModelAndView result = new ModelAndView(modelAndViewName);
+        ModelAndView result = new ModelAndView("quote");
         result.addObject("quoteTitle", splitQuote.get(0));
+        if (splitQuote.get(0).isEmpty()) {
+            result.addObject("newLine", "");
+        } else {
+            result.addObject("newLine", "<br />");
+        }
         result.addObject("quotePron", splitQuote.get(1));
         result.addObject("quoteWordType", splitQuote.get(2));
         result.addObject("quoteText", splitQuote.get(3));
         result.addObject("imageURL", String.format("/images/image%d.jpg", (imageIndex)));
+
 
         return result;
     }
@@ -87,6 +86,7 @@ public class MainController {
         }
 
         quoteTitle = currLine;
+
 
         return List.of(quoteTitle,quotePron,quoteWordType,quoteText);
 
